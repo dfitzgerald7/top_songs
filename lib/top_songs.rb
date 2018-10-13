@@ -14,3 +14,6 @@ end
 #Require files
 require_relative "top_songs/version"
 require_relative "top_songs/cli"
+require_relative "top_songs/scraper"
+require_relative "top_songs/charts"
+require_relative "top_songs/list"

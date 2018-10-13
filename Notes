@@ -1,0 +1,16 @@
+
+
+Introduction
+Enter commands to either list pop music or top for a genre
+
+-------------------------OBJECTS
+
+  CHARTS object that represents homepage
+    scrapes different chart names and urls so the user can choose a chart to be scraped
+
+
+  LIST object for a certain genre
+    contains arrays of artist names and song titles that will be used for printing
+
+  SCRAPER
+    scrapes the website for useful info
