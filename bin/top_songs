@@ -1,7 +1,8 @@
-#!usr/bin/env ruby
+#!/usr/bin/env ruby
 
-require_relative "../lib/top_songs.rb"
+
+#require_relative "../lib/top_songs.rb"
 
 puts "Hello World"
 
-#TopSongs::CLI.run
+TopSongs::CLI.run
