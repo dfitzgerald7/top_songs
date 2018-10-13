@@ -1,4 +1,8 @@
-class TopSongs::Charts
+
+#Represents each chart on the homepage of Billboard 100
+#has a name and a url so the list can be accessed thru chart 
+
+class TopSongs::Chart
   attr_accessor :name, :url
   @@all = []
 
