@@ -12,4 +12,5 @@ end
 
 
 #Require files
-require "top_songs/version"
+require_relative "top_songs/version"
+require_relative "top_songs/cli"
