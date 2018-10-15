@@ -1,8 +1,13 @@
 
 
 class TopSongs::Song
-  attr_accessor :artist, :title
+  attr_accessor :artist, :title, :rank
 
+  def initialize(title, artist, rank)
+    self.title = title
+    self.artist = artist
+    self.rank = rank
+  end
 
   def print_list
     puts self.chart_name

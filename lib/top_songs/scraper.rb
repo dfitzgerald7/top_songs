@@ -5,8 +5,8 @@ class TopSongs::Scraper
   def initialize
     self.class.scrape_chart(CHART_URL)
     TopSongs::Chart.all.each do |chart|
-      binding.pry
-      self.class.scrape_list(CHART_URL + chart.url)
+      #binding.pry
+      self.class.scrape_list(CHART_URL + chart.url, chart)
     end
   #  binding.pry
 
@@ -39,10 +39,14 @@ class TopSongs::Scraper
 
   end
 
-  def self.scrape_list(url)
+  def self.scrape_list(url, chart)
     doc = Nokogiri::HTML(open(url))
-    #doc.css("div.chart-list-item")[1].text.split("\n") - [""]
-
+    doc.css("div.chart-list-item").each do |song|
+      song_arr = song.text.split("\n") - [""] - [" "]
+      #binding.pry
+      TopSongs::Song.new(song_arr[1], song_arr[2], song_arr[0]).tap {|song| chart.songs << song}
+    end
+    binding.pry
   end
 
 end
