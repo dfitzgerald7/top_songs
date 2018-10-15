@@ -7,6 +7,9 @@ Enter commands to either list pop music or top for a genre
 
   CHARTS object that represents homepage
     scrapes different chart names and urls so the user can choose a chart to be scraped
+    Has many songs/albums
+
+  SONGS
 
 
   LIST object for a certain genre
