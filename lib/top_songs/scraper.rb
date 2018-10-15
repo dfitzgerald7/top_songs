@@ -35,11 +35,13 @@ class TopSongs::Scraper
   def self.scrape_list(url, chart)
     url = "https://www.billboard.com/charts/emerging-artists" if url == "https://www.billboard.com/charts/AAF"
     doc = Nokogiri::HTML(open(url))
+    #binding.pry
+    chart.songs << TopSongs::Song.new(doc.css(".chart-number-one__title").text.strip, doc.css(".chart-number-one__artist").text.strip, 1)
 
     doc.css("div.chart-list-item").each do |song|
-      title = song.attr("data-title")
-      artist = song.attr("data-artist")
-      rank = song.attr("data-rank")
+      title = song.attr("data-title").strip
+      artist = song.attr("data-artist").strip
+      rank = song.attr("data-rank").strip
       #binding.pry
       TopSongs::Song.new(title, artist, rank).tap {|song| chart.songs << song}
     end
