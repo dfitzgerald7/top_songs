@@ -2,8 +2,10 @@ class TopSongs::CLI
 
 
   def run
+      TopSongs::Scraper.new
       puts "Welcome to the top songs according to Billboard 100!"
       menu
+
       #take user input
       #scrape homepage for titles and
       input = nil

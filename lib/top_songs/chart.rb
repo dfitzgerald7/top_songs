@@ -1,15 +1,15 @@
 
 #Represents each chart on the homepage of Billboard 100
-#has a name and a url so the list can be accessed thru chart 
+#has a name and a url so the list can be accessed thru chart
 
 class TopSongs::Chart
   attr_accessor :name, :url
   @@all = []
 
 
-  def self.find_or_create(name)
-    puts "find or create"
-    # if self.all.find_by{|chart| }
+
+  def self.find_chart(name)
+      self.find_by{|c| c.name == name}
   end
 
   def self.all
