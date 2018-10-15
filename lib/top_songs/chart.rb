@@ -14,12 +14,12 @@ class TopSongs::Chart
       self.is_songs = false
     else
       self.is_songs = true
-    end 
+    end
     self.save
   end
 
   def self.find_chart(name)
-      self.find_by{|c| c.name == name}
+      self.all.find{|c| c.name == name}.print_songs
   end
 
   def print_songs

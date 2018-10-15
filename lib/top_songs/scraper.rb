@@ -5,8 +5,7 @@ class TopSongs::Scraper
   def initialize
     self.class.scrape_chart(CHART_URL)
     TopSongs::Chart.all.each do |chart|
-      #binding.pry
-      #puts CHART_URL + chart.url
+
       self.class.scrape_list(CHART_URL + chart.url, chart)
     end
 
@@ -45,7 +44,7 @@ class TopSongs::Scraper
       #binding.pry
       TopSongs::Song.new(title, artist, rank).tap {|song| chart.songs << song}
     end
-    #binding.pry
+
   end
 
 end
