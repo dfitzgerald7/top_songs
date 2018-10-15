@@ -3,6 +3,9 @@ class TopSongs::CLI
 
   def run
       TopSongs::Scraper.new
+      TopSongs::Chart.all.each do |c|
+        c.print_songs
+      end
       puts "Welcome to the top songs according to Billboard 100!"
       menu
 
