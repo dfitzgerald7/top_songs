@@ -4,6 +4,10 @@ class TopSongs::Scraper
 
   def initialize
     self.class.scrape_chart(CHART_URL)
+    TopSongs::Chart.all.each do |chart|
+      binding.pry
+      self.class.scrape_list(CHART_URL + chart.url)
+    end
   #  binding.pry
 
     #top charts
@@ -22,7 +26,7 @@ class TopSongs::Scraper
     doc = Nokogiri::HTML(open(url))
     doc.css("a.charts-landing__link").each do |c|
       chart_name = c.text.strip.split("\n")[0]
-      ref_url = c.attr("href")
+      ref_url = c.attr("href").gsub("/charts", "")
 
       TopSongs::Chart.new(chart_name, ref_url)
     end
@@ -32,10 +36,12 @@ class TopSongs::Scraper
 
       TopSongs::Chart.new(chart_name, ref_url)
     end
-    binding.pry
+
   end
 
   def self.scrape_list(url)
+    doc = Nokogiri::HTML(open(url))
+    #doc.css("div.chart-list-item")[1].text.split("\n") - [""]
 
   end
 
