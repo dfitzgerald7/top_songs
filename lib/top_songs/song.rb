@@ -1,7 +1,7 @@
 
 
 class TopSongs::Song
-  attr_accessor :artists, :title
+  attr_accessor :artist, :title
 
 
   def print_list
