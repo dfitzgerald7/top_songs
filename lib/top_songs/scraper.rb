@@ -2,15 +2,12 @@ class TopSongs::Scraper
 
   CHART_URL = "https://www.billboard.com/charts"
 
+  #put this in other method
   def initialize
     self.class.scrape_chart(CHART_URL)
     TopSongs::Chart.all.each do |chart|
-
       self.class.scrape_list(CHART_URL + chart.url, chart)
     end
-
-
-
   end
 
   def self.scrape_chart(url)

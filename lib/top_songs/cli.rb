@@ -12,7 +12,7 @@ class TopSongs::CLI
       input = nil
 
       while input != "exit"
-      
+      print "->"
       input = gets.chomp.downcase
       if input == "menu"
         menu
@@ -47,7 +47,7 @@ class TopSongs::CLI
       Christian
       Japan
       Exit"
-    print "->"
+
   end
 
 end
