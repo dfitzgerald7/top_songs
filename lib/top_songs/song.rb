@@ -1,6 +1,6 @@
 
 
-class TopSongs::Song
+class TopSongs::ListObject
   attr_accessor :artist, :title, :rank
 
   def initialize(title, artist, rank)

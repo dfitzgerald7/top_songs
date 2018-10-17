@@ -3,10 +3,10 @@ class TopSongs::Scraper
   CHART_URL = "https://www.billboard.com/charts"
 
   #put this in other method
-  def initialize
-    self.class.scrape_chart(CHART_URL)
+  def self.scrape
+    scrape_chart(CHART_URL)
     TopSongs::Chart.all.each do |chart|
-      self.class.scrape_list(CHART_URL + chart.url, chart)
+      scrape_list(CHART_URL + chart.url, chart)
     end
   end
 
@@ -32,14 +32,14 @@ class TopSongs::Scraper
     url = "https://www.billboard.com/charts/emerging-artists" if url == "https://www.billboard.com/charts/AAF"
     doc = Nokogiri::HTML(open(url))
     #binding.pry
-    chart.songs << TopSongs::Song.new(doc.css(".chart-number-one__title").text.strip, doc.css(".chart-number-one__artist").text.strip, 1)
+    chart.list_objs << TopSongs::ListObject.new(doc.css(".chart-number-one__title").text.strip, doc.css(".chart-number-one__artist").text.strip, 1)
 
     doc.css("div.chart-list-item").each do |song|
       title = song.attr("data-title").strip
       artist = song.attr("data-artist").strip
       rank = song.attr("data-rank").strip
       #binding.pry
-      TopSongs::Song.new(title, artist, rank).tap {|song| chart.songs << song}
+      TopSongs::ListObject.new(title, artist, rank).tap {|song| chart.list_objs << song}
     end
 
   end

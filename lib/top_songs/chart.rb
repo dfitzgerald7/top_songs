@@ -3,13 +3,13 @@
 #has a name and a url so the list can be accessed thru chart
 
 class TopSongs::Chart
-  attr_accessor :name, :url, :songs, :is_songs
+  attr_accessor :name, :url, :list_objs, :is_songs
   @@all = []
 
   def initialize(name, url)
     self.name = name
     self.url = url
-    self.songs = []
+    self.list_objs = []
     if (self.name == "EMERGING ARTISTS" || self.name == "ARTIST 1OO")
       self.is_songs = false
     else
@@ -23,14 +23,15 @@ class TopSongs::Chart
   end
 
   def print_songs
-    puts self.name
-    puts ""
+    puts "\n#{self.name}
+    \n"
+
     if self.is_songs == true
-      self.songs.each do |song|
+      self.list_objs.each do |song|
         puts "#{song.rank}. #{song.title} by #{song.artist}"
       end
     else
-      self.songs.each do |song|
+      self.list_objs.each do |song|
         puts "#{song.rank}. #{song.title}"
       end
     end

@@ -3,7 +3,7 @@ class TopSongs::CLI
     INPUT_HASH = {"hot 100" => "THE HOT 1OO", "billboard 200" => "BILLBOARD 2OO", "artist 100" => "ARTIST 1OO", "emerging artists" => "EMERGING ARTISTS", "top 40" => "MAINSTREAM TOP 40", "rock" => "HOT ROCK SONGS", "latin" => "HOT LATIN SONGS", "hip hop" => "HOT R&B/HIP-HOP SONGS", "dance" => "HOT DANCE/ELECTRONIC SONGS", "country" => "HOT COUNTRY SONGS", "all time" => "GREATEST OF ALL TIME HOT 100 SONGS", "youtube" => "YOUTUBE SONGS", "holiday" => "HOLIDAY 100", "christian" => "HOT CHRISTIAN SONGS", "japan" => "JAPAN HOT 100"}
 
   def run
-      TopSongs::Scraper.new
+      TopSongs::Scraper.scrape
       puts "Welcome to the top songs according to Billboard 100!"
       menu
 
@@ -12,26 +12,24 @@ class TopSongs::CLI
       input = nil
 
       while input != "exit"
-      print "->"
+      print "Please enter command. Enter menu to see chart list.\n-> "
       input = gets.chomp.downcase
-      if input == "menu"
-        menu
+        if input == "menu"
+          menu
 
-      elsif INPUT_HASH.keys.include?(input)
+        elsif INPUT_HASH.keys.include?(input)
           TopSongs::Chart.find_chart(INPUT_HASH[input])
-          #----------------WANTS
-          #Another screen that says 'would you like to see the top 100 list?'
-          #uses the charts object to grab url and print ordered list of songs
 
+        elsif input == "exit"
+          puts "Goodbye!"
         else
-          puts "Invalid input. Enter 'Menu' to see commands"
+          puts "Invalid input. Please try again."
         end
       end
   end
 
   def menu
-    puts "Please enter a command:
-      Menu
+    puts "Please choose a chart:
       Hot 100
       Billboard 200
       Artist 100
