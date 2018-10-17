@@ -3,6 +3,7 @@ class TopSongs::CLI
     INPUT_HASH = {"hot 100" => "THE HOT 1OO", "billboard 200" => "BILLBOARD 2OO", "artist 100" => "ARTIST 1OO", "emerging artists" => "EMERGING ARTISTS", "top 40" => "MAINSTREAM TOP 40", "rock" => "HOT ROCK SONGS", "latin" => "HOT LATIN SONGS", "hip hop" => "HOT R&B/HIP-HOP SONGS", "dance" => "HOT DANCE/ELECTRONIC SONGS", "country" => "HOT COUNTRY SONGS", "all time" => "GREATEST OF ALL TIME HOT 100 SONGS", "youtube" => "YOUTUBE SONGS", "holiday" => "HOLIDAY 100", "christian" => "HOT CHRISTIAN SONGS", "japan" => "JAPAN HOT 100"}
 
   def run
+      puts "Loading ..."
       TopSongs::Scraper.scrape
       puts "Welcome to the top songs according to Billboard 100!"
       menu

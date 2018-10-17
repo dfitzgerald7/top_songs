@@ -17,3 +17,12 @@ Enter commands to either list pop music or top for a genre
 
   SCRAPER
     scrapes the website for useful info
+
+
+  Mock
+    Use correct terminologies to describe code
+    explain shebang
+    explain environment
+    require vs require_relative (paths)
+    module (namespacing)
+    live coding 
