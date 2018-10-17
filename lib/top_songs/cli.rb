@@ -8,8 +8,6 @@ class TopSongs::CLI
       puts "Welcome to the top songs according to Billboard 100!"
       menu
 
-      #take user input
-      #scrape homepage for titles and
       input = nil
 
       while input != "exit"
@@ -19,7 +17,17 @@ class TopSongs::CLI
           menu
 
         elsif INPUT_HASH.keys.include?(input)
-          TopSongs::Chart.find_chart(INPUT_HASH[input])
+          puts "To see entire list, enter 'total'"
+          puts "Otherwise, enter the number of songs you would like to see."
+          input2 = gets.chomp
+          if input2 == "total"
+          #  binding.pry
+            TopSongs::Chart.print_chart(INPUT_HASH[input], TopSongs::Chart.find_chart(INPUT_HASH[input]).list_objs.size)
+          elsif TopSongs::Chart.find_chart(INPUT_HASH[input]).list_objs.size > input2.to_i
+            TopSongs::Chart.print_chart(INPUT_HASH[input], input2.to_i)
+          else
+            puts "Invalid input."
+          end
 
         elsif input == "exit"
           puts "Goodbye!"
@@ -46,7 +54,6 @@ class TopSongs::CLI
       Christian
       Japan
       Exit"
-
   end
 
 end

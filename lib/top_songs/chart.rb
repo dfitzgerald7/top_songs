@@ -19,20 +19,27 @@ class TopSongs::Chart
   end
 
   def self.find_chart(name)
-      self.all.find{|c| c.name == name}.print_songs
+      self.all.find{|c| c.name == name}
   end
 
-  def print_songs
+  def self.print_chart(name, input_num)
+    #binding.pry
+    self.find_chart(name).print_songs(input_num)
+  end
+
+  def print_songs(input_num)
     puts "\n#{self.name}
     \n"
-
+    i = 0
     if self.is_songs == true
-      self.list_objs.each do |song|
-        puts "#{song.rank}. #{song.title} by #{song.artist}"
+      input_num.times do
+        puts "#{self.list_objs[i].rank}. #{self.list_objs[i].title} by #{self.list_objs[i].artist}"
+        i += 1
       end
     else
-      self.list_objs.each do |song|
-        puts "#{song.rank}. #{song.title}"
+      input_num.times do |song|
+        puts "#{self.list_objs[i].rank}. #{self.list_objs[i].title}"
+        i += 1
       end
     end
   end
